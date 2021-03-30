@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="" id="formulario">
+        <label>Name</label>
+        <input type="text" name="name" id="name">
+
+        <label>Email</label>
+        <input type="email" name="email" id="email">
+
+        <label>Password</label>
+        <input type="password" name="password" id="password">
+
+        <input type="submit" value="ENVIAR">
+    </form>
+
+    <script>
+        $(document).ready(function(){
+            $('#formulario').submit(function(){
+                let nome = document.querySelector('#name').value
+                let eml = document.querySelector('#email').value
+                let pswd = document.querySelector('#password').value
+
+                const usr = {
+                    name: nome,
+                    email: eml,
+                    password: pswd
+                }
+
+                $.ajax({
+                    type:'POST',
+                    url: "http://localhost:3333/auth/register",
+                    data: usr,
+                    success: function(){
+                        alert("Sucesso")
+                    },
+                    error: function(errorThrown){
+                        console.log(errorThrown)
+                    }
+                })
+
+                return false
+            })
+        })
+    </script>
+</body>
+</html>

@@ -8,7 +8,7 @@ const TarefaSchema = new mongoose.Schema({
     descricao: {
         type: String,
     },
-    user: {
+    assignedTo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         require: true

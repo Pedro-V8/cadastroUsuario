@@ -76,6 +76,7 @@ router.post('/authenticate' , async (req , res) => {
 router.delete('/delete' , async(req , res) => {
     try {
         const { email } = req.body
+
         await User.deleteOne({ email })
         res.status(200).send({ ok: "true" })
     } catch (error) {
@@ -84,26 +85,5 @@ router.delete('/delete' , async(req , res) => {
 })
 
 
-router.post('/createTask' , async (req , res) => {
-    try {
-        console.log('Cheguei aqui')
-        const tarefa = await Tarefa.create({ ...req.body , user: user.id })
-        return res.send({ tarefa})
-    } catch (error) {
-        return res.send({error: 'Failed to create task'})
-    }
-})
-
-
-
-router.get('/tasks' , async (req , res) => {
-    try {
-        console.log('Cheguei aqui')
-        const tarefa = await Tarefa.find()
-        return res.send(tarefa)
-    } catch (error) {
-        return res.send({error: 'Failed to create task'})
-    }
-})
 
 module.exports = app => app.use('/auth' , router)

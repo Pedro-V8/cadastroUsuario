@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 //app.use(bodyParser.urlencoded({ extended: true }))
 
 require('./controllers/authController')(app)
-require('./controllers/projectController')(app)
+require('./controllers/tasksController')(app)
 
 app.listen(3333 , (req , res) => {
     console.log('Servidor rodando')

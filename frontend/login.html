@@ -10,8 +10,6 @@
 </head>
 <body>
     <form action="" method="" id="formulario">
-        <label>Name</label>
-        <input type="text" name="name" id="name">
 
         <label>Email</label>
         <input type="email" name="email" id="email">
@@ -26,24 +24,23 @@
         //Hello
         $(document).ready(function(){
             $('#formulario').submit(function(){
-                let nome = document.querySelector('#name').value
+
                 let eml = document.querySelector('#email').value
                 let pswd = document.querySelector('#password').value
 
                 const usr = {
-                    name: nome,
                     email: eml,
                     password: pswd
                 }
 
                 $.ajax({
                     type:'POST',
-                    url: "http://localhost:3333/auth/register",
+                    url: "http://localhost:3333/auth/authenticate",
                     data: usr,
                     success: function(response){
                         console.log(response)
                         if(response.error === undefined){
-                            alert(response)
+                            alert('Hello '+ response.user.name)
                         } else {
                             alert(response.error)
                         }

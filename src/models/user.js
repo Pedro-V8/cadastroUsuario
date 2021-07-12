@@ -1,5 +1,6 @@
 const mongoose = require('../database')
 const bcrypt = require('bcryptjs')
+const { mongo } = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -17,6 +18,14 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false,
     },
+    classTyoe: {
+        type: String,
+        require: true
+    },
+    tasks: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Tarefa'
+    }],
     createdAt: {
         type: Date,
         default: Date.now

@@ -18,6 +18,18 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false,
     },
+    tipo: {
+        type: String,
+        require: true, 
+    },
+    funcao: {
+        type: String,
+        require: true, 
+    },
+    organizacao: {
+        type: String,
+        require: true,  
+    },
     classType: {
         type: String,
         require: true
